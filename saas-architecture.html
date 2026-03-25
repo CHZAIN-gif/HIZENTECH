@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SaaS ARCHITECTURE | HIZEN TECH UK</title>
+    <meta name="description" content="Enterprise SaaS Engineering and Global Microservices Sync by Hizen Trading Co. Ltd.">
+    <link rel="icon" type="image/png" href="logos/logo.PNG">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200;0,400;0,600;0,800;1,200;1,400&family=JetBrains+Mono:wght@400;700&display=swap');
+
+        :root {
+            --bg: #000000;
+            --surface: rgba(10, 10, 15, 0.98);
+            --accent: #D4AF37; /* GOLDEN ACCENT */
+            --border: rgba(212, 175, 55, 0.25);
+            --text-dim: #94A3B8;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg);
+            color: #FFFFFF;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        /* --- GOLDEN SHINING GRID BACKGROUND --- */
+        .kinetic-bg {
+            position: fixed; inset: 0;
+            background-image: 
+                linear-gradient(rgba(212, 175, 55, 0.15) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(212, 175, 55, 0.15) 1px, transparent 1px);
+            background-size: 50px 50px; z-index: -1;
+            mask-image: radial-gradient(circle at 50% 50%, black, transparent 95%);
+            animation: gridFlow 35s linear infinite;
+        }
+        @keyframes gridFlow { 0% { background-position: 0 0; } 100% { background-position: 100px 100px; } }
+
+        /* --- DUAL AXIS SHINING LIGHTS --- */
+        .beam-h {
+            position: fixed; top: 0; bottom: 0; width: 1.5px;
+            background: linear-gradient(to bottom, transparent, #FFFFFF, transparent);
+            box-shadow: 0 0 20px 2px rgba(255, 255, 255, 0.6);
+            z-index: 100; animation: shineLR 12s infinite cubic-bezier(0.4, 0, 0.2, 1);
+            opacity: 0.4; pointer-events: none;
+        }
+        @keyframes shineLR { 0% { left: -10%; } 100% { left: 110%; } }
+
+        .beam-v {
+            position: fixed; left: 0; right: 0; height: 1.5px;
+            background: linear-gradient(to right, transparent, #FFFFFF, transparent);
+            box-shadow: 0 0 20px 2px rgba(255, 255, 255, 0.6);
+            z-index: 100; animation: scanTB 15s infinite cubic-bezier(0.4, 0, 0.2, 1);
+            opacity: 0.4; pointer-events: none;
+        }
+        @keyframes scanTB { 0% { top: -10%; } 100% { top: 110%; } }
+
+        .glass-module { background: var(--surface); backdrop-filter: blur(40px); border: 1px solid var(--border); }
+        .reveal { opacity: 0; transform: translateY(30px); transition: 1s cubic-bezier(0.16, 1, 0.3, 1); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+        .metadata { font-size: 10px; font-family: 'JetBrains Mono', monospace; text-transform: uppercase; letter-spacing: 0.4em; color: var(--accent); font-weight: 800; }
+
+        .btn-gold {
+            background: #FFF; color: #000; padding: 16px 36px; border-radius: 4px;
+            font-weight: 800; text-transform: uppercase; letter-spacing: 0.2em;
+            transition: 0.3s; font-size: 10px;
+        }
+        .btn-gold:hover { background: var(--accent); color: #000; box-shadow: 0 0 30px rgba(212, 175, 55, 0.4); }
+
+        /* --- CHAT BOT UI CSS --- */
+        #hizen-chat {
+            display: none; position: fixed; bottom: 100px; right: 30px; width: 380px; height: 550px;
+            background: #050505; border: 1px solid var(--accent); border-radius: 24px; z-index: 9999;
+            flex-direction: column; box-shadow: 0 0 40px rgba(0, 0, 0, 1); overflow: hidden;
+        }
+        .c-head { padding: 20px; background: #0a0a0f; border-bottom: 1px solid #1e1b4b; display: flex; justify-content: space-between; align-items: center; }
+        #c-body { flex: 1; padding: 20px; overflow-y: auto; font-size: 13px; color: #e2e8f0; scrollbar-width: none; }
+        .msg-box { margin-bottom: 15px; line-height: 1.6; }
+        .bot-m { border-left: 2px solid var(--accent); padding-left: 12px; color: #fff; }
+        .user-m { text-align: right; color: #94A3B8; font-style: italic; }
+        .c-foot { padding: 20px; background: #08080c; border-top: 1px solid rgba(255,255,255,0.05); }
+        .input-wrap { display: flex; background: #111; border-radius: 12px; padding: 10px 15px; border: 1px solid #222; margin-bottom: 12px; }
+        .input-wrap input { flex: 1; background: transparent; border: none; color: white; outline: none; font-size: 13px; }
+
+        .chat-btn { position: fixed; bottom: 30px; right: 30px; width: 65px; height: 65px; background: var(--accent); border-radius: 20px; display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 10000; box-shadow: 0 10px 25px rgba(212, 175, 55, 0.4); }
+        .notif { position: absolute; top: -5px; right: -5px; background: red; color: white; font-size: 10px; width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 2px solid #000; animation: pulse 1.5s infinite; font-weight: 900; }
+        @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.2); } 100% { transform: scale(1); } }
+    </style>
+</head>
+<body>
+    <div class="kinetic-bg"></div>
+    <div class="beam-h"></div>
+    <div class="beam-v"></div>
+
+    <nav class="fixed w-full z-[500] px-6 py-6 transition-all duration-700">
+        <div class="max-w-[1600px] mx-auto flex justify-between items-center glass-module rounded-2xl px-10 py-4 border-white/5 shadow-2xl">
+            <a href="index.html" class="flex items-center gap-6">
+                <img src="logos/logo.PNG" alt="HIZEN" class="h-10 w-auto" onerror="this.src='https://placehold.co/150x50/000/fff?text=HIZEN'">
+                <div class="flex flex-col border-l border-white/10 pl-6 hidden md:flex leading-none">
+                    <span class="text-xl font-black uppercase tracking-tight">HIZEN</span>
+                    <span class="metadata mt-1 !text-[7px]">SaaS Architecture</span>
+                </div>
+            </a>
+            <div class="hidden lg:flex items-center gap-14 text-[10px] font-black uppercase tracking-[0.4em] text-gray-500">
+                <a href="index.html" class="hover:text-white transition">Hub Console</a>
+                <a href="contact.html" class="bg-white text-black px-8 py-2.5 rounded-lg hover:bg-accent hover:text-white transition-all transform active:scale-95 shadow-xl font-black uppercase tracking-widest text-[9px]">
+                    Engagement <i class="fa-solid fa-arrow-right-long ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="pt-60 pb-32 px-10">
+        <div class="max-w-[1200px] mx-auto space-y-12 reveal active">
+            <span class="metadata">Division // Software_Systems</span>
+            <h1 class="text-6xl md:text-8xl font-black uppercase leading-none tracking-tighter">SaaS <br><span class="italic text-transparent bg-clip-text bg-gradient-to-r from-yellow-500 via-white to-yellow-200">Architecture.</span></h1>
+            <p class="text-2xl font-light text-gray-400 max-w-3xl italic border-l-4 border-accent pl-10">Clinical engineering for enterprise scaling. We architect distributed systems that handle global-tier workloads with absolute zero latency and sovereign data control.</p>
+        </div>
+    </header>
+
+    <main class="pb-40 px-10">
+        <div class="max-w-[1200px] mx-auto space-y-32">
+            
+            <!-- THE ESSAY NARRATIVE -->
+            <section class="reveal">
+                <div class="grid lg:grid-cols-2 gap-20 items-start">
+                    <div class="space-y-8 prose prose-invert max-w-none">
+                        <h2 class="text-3xl font-black uppercase tracking-tight italic text-accent">The Philosophy of Distributed Logic.</h2>
+                        <p class="text-gray-400 leading-relaxed text-lg">
+                            In the modern industrial landscape, software is no longer a tool—it is the central nervous system of the enterprise. At **Hizen Trading Co. Ltd**, our approach to SaaS (Software as a Service) Architecture is rooted in the pursuit of clinical immortality. Most commercial software is built on "monolithic fragility," where a single logical failure can cascade through the entire infrastructure. We reject this.
+                        </p>
+                        <p class="text-gray-400 leading-relaxed text-lg">
+                            Our engineering protocols focus on **Microservices Orchestration**. By decomposing complex business logic into isolated, atomic services, we ensure that your platform is horizontally scalable and resilient to internal anomalies. Each service operates within its own dedicated node, communicating via high-performance gRPC or RESTful synapses, managed by Kubernetes clusters that react to traffic surges in real-time.
+                        </p>
+                        <p class="text-gray-400 leading-relaxed text-lg">
+                            Furthermore, we prioritize **Data Sovereignty**. Traditional SaaS models often leave proprietary enterprise data vulnerable on shared public clouds. Hizen architects private-node clouds where your data resides in clinically isolated environments, protected by post-quantum encryption and multi-tenant DB isolation. This ensures that while your software scales globally, your intellectual property remains under absolute sovereign control.
+                        </p>
+                    </div>
+                    <div class="glass-module p-10 rounded-3xl border-dashed border-2 border-accent/20">
+                        <h4 class="metadata mb-10">Core System Specifications</h4>
+                        <ul class="space-y-6 text-xs font-bold text-gray-300 uppercase tracking-[0.2em]">
+                            <li class="flex items-center gap-4"><i class="fa-solid fa-microchip text-accent"></i> Kubernetes Multi-Region Clusters</li>
+                            <li class="flex items-center gap-4"><i class="fa-solid fa-microchip text-accent"></i> Node.js & Go Microservices</li>
+                            <li class="flex items-center gap-4"><i class="fa-solid fa-microchip text-accent"></i> Real-time Synapse Event Bus</li>
+                            <li class="flex items-center gap-4"><i class="fa-solid fa-microchip text-accent"></i> Isolated Multi-Tenant Schema</li>
+                            <li class="flex items-center gap-4"><i class="fa-solid fa-microchip text-accent"></i> Global Edge Latency < 10ms</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ADDITIONAL NARRATIVE -->
+            <section class="reveal">
+                <div class="text-center max-w-4xl mx-auto space-y-12">
+                    <h2 class="text-4xl font-black uppercase italic tracking-widest">Sovereign Performance.</h2>
+                    <p class="text-gray-500 leading-relaxed text-lg italic">
+                        Our journey in system design is defined by the absolute technical success of our partners. We don't just build code; we architect the logic that sustains commercial dominance. From high-frequency trading platforms to global logistical AI hubs, Hizen's SaaS frameworks are the industrial benchmark for reliability and clinical engineering.
+                    </p>
+                    <div class="pt-10">
+                        <a href="contact.html" class="btn-gold">Initiate Infrastructure Audit</a>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <footer class="py-40 px-10 border-t border-white/5 bg-black">
+        <div class="max-w-[1500px] mx-auto grid lg:grid-cols-4 gap-24 text-left">
+            <div class="col-span-1 space-y-10">
+                <div class="flex items-center gap-8">
+                    <img src="logos/logo.PNG" alt="HIZEN" class="h-8 w-auto opacity-90">
+                    <div class="flex flex-col border-l border-white/10 pl-6 leading-none"><span class="font-black text-2xl uppercase italic text-white">HIZEN</span><span class="metadata !text-[7px]">Sovereign Archive</span></div>
+                </div>
+                <p class="text-[10px] text-gray-500 uppercase tracking-widest leading-[2.5] font-bold italic">PRECISION • TECHNOLOGY • RELIABILITY</p>
+            </div>
+            <div class="lg:col-span-3 grid md:grid-cols-3 gap-24">
+                <div class="space-y-10">
+                    <h6 class="metadata">Solutions</h6>
+                    <ul class="text-[12px] text-gray-600 space-y-6 font-bold italic">
+                        <li><a href="ai-framework-design.html" class="text-white hover:text-accent transition">AI Framework Design</a></li>
+                        <li><a href="offensive-cyber-labs.html" class="text-white hover:text-accent transition">Offensive Cyber Labs</a></li>
+                        <li><a href="saas-architecture.html" class="text-accent underline underline-offset-4">SaaS Architecture</a></li>
+                        <li><a href="cloud-data-sovereign.html" class="text-white hover:text-accent transition">Cloud Data Sovereign</a></li>
+                    </ul>
+                </div>
+                <div class="space-y-10">
+                    <h6 class="metadata">Venture</h6>
+                    <ul class="text-[12px] text-gray-600 space-y-6 font-bold italic">
+                        <li><a href="uk-ltd-formation.html" class="text-white hover:text-accent transition">UK LTD Formation</a></li>
+                        <li><a href="us-llc-entity-design.html" class="text-white hover:text-accent transition">US LLC Entity Design</a></li>
+                        <li><a href="merchant-compliance.html" class="text-white hover:text-accent transition">Merchant Compliance</a></li>
+                        <li><a href="amazon-az-scaling.html" class="text-white hover:text-accent transition">Amazon Scaling</a></li>
+                    </ul>
+                </div>
+                <div class="space-y-10">
+                    <h6 class="metadata">Board</h6>
+                    <ul class="text-[12px] text-gray-600 space-y-6 font-black uppercase">
+                        <li><a href="zain-haider.html" class="text-white hover:text-accent transition">CH. ZAIN HAIDER</a></li>
+                        <li><a href="arshman-hussain.html" class="text-white hover:text-accent transition">CH. ARSHMAN HUSSAIN</a></li>
+                        <li><a href="aims.html" class="text-white hover:text-accent transition">AIMS & PHILOSOPHY</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ==========================================================
+         EXECUTIVE AI CONCIERGE (BELOW FOOTER)
+         ========================================================== -->
+    <div id="hizen-chat">
+        <div class="c-head">
+            <span style="font-size:10px; font-weight:900; color:#D4AF37; text-transform:uppercase; letter-spacing:2px;">Intelligence Terminal</span>
+            <button onclick="toggleChat()" style="color:#64748b; font-size:24px; background:none; border:none; cursor:pointer;">&times;</button>
+        </div>
+        <div id="c-body">
+            <div class="msg-box bot-m">HIZEN SaaS Division active. Facility technical mission deployment opened. State your objective.</div>
+        </div>
+        <div class="c-foot">
+            <div class="input-wrap">
+                <input type="text" id="c-input" placeholder="Inquire technical specifications..." onkeypress="if(event.key==='Enter') executeChat()">
+                <button onclick="executeChat()" style="color:#D4AF37; background:none; border:none; cursor:pointer;"><i class="fa-solid fa-paper-plane"></i></button>
+            </div>
+            <a href="https://wa.me/923241121819" target="_blank" style="display: block; text-align: center; background: #25d366; color: white; padding: 12px; border-radius: 12px; text-decoration: none; font-weight: 800; font-size: 11px; text-transform: uppercase;">WhatsApp Executive Direct</a>
+        </div>
+    </div>
+
+    <!-- TRIGGER BUTTON (HEADSET ICON) -->
+    <div onclick="toggleChat()" class="chat-btn">
+        <i class="fa-solid fa-headset text-3xl text-white"></i>
+        <div id="notif" class="notif">1</div>
+    </div>
+
+    <script>
+        const GEMINI_KEY = "AIzaSyBvx1fSLvvDzGWJwrNyQ-jcMk-tHTTCWhk";
+        const observer = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); }); }, { threshold: 0.1 });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+        function toggleChat() { const c = document.getElementById('hizen-chat'); const n = document.getElementById('notif'); c.style.display = (c.style.display === 'flex') ? 'none' : 'flex'; if(n) n.style.display = 'none'; }
+        async function executeChat() {
+            const i = document.getElementById('c-input'); const b = document.getElementById('chat-body'); const val = i.value.trim(); if(!val) return;
+            b.innerHTML += `<div class="msg-box user-m">${val}</div>`; i.value = ""; b.scrollTop = b.scrollHeight;
+            try {
+                const r = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${GEMINI_KEY}`, {
+                    method: "POST", headers: {"Content-Type": "application/json"},
+                    body: JSON.stringify({contents: [{parts: [{text: `Professional SaaS technical response for: ${val}`}]}]})
+                });
+                const d = await r.json();
+                b.innerHTML += `<div class="msg-box bot-m" style="border-left: 2px solid #D4AF37; padding-left: 12px; margin-bottom: 15px; color: #fff;"><strong>[HIZEN]:</strong> ${d.candidates[0].content.parts[0].text}</div>`;
+            } catch (err) { b.innerHTML += `<div class="msg-box bot-m">Security protocol active. Bridge via WhatsApp.</div>`; }
+            b.scrollTop = b.scrollHeight;
+        }
+    </script>
+</body>
+</html>

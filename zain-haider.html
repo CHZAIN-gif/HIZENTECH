@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SOVEREIGN EXECUTIVE SEO -->
+    <title>CH. ZAIN HAIDER | FOUNDER & IT CONSULTANT</title>
+    <meta name="description" content="Official profile of Ch. Zain Haider. 18-year-old IT Consultant with 8 years of experience. OSCP Master, Google Certified, and Lead Architect at Hizen Tech.">
+    
+    <!-- FAVICON -->
+    <link rel="icon" type="image/png" href="logos/logo.PNG">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200;0,400;0,600;0,800;1,200;1,400&family=JetBrains+Mono:wght@400;700&display=swap');
+
+        :root {
+            --bg: #000000;
+            --surface: rgba(10, 10, 15, 0.98);
+            --accent: #8B5CF6;
+            --border: rgba(139, 92, 246, 0.2);
+            --text-main: #F8FAFC;
+            --text-dim: #64748B;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg);
+            color: var(--text-main);
+            scroll-behavior: smooth;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .mono { font-family: 'JetBrains Mono', monospace; }
+
+        /* --- INDUSTRIAL KINETIC GRID --- */
+        .kinetic-bg {
+            position: fixed;
+            inset: 0;
+            background-image: 
+                linear-gradient(rgba(139, 92, 246, 0.12) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(139, 92, 246, 0.12) 1px, transparent 1px);
+            background-size: 50px 50px;
+            z-index: -1;
+            mask-image: radial-gradient(circle at 50% 50%, black, transparent 95%);
+            animation: gridFlow 40s linear infinite;
+        }
+        @keyframes gridFlow { 0% { background-position: 0 0; } 100% { background-position: 100px 100px; } }
+
+        /* --- DUAL AXIS WHITE SHINING LINES --- */
+        .shining-line-h {
+            position: fixed;
+            top: 0; bottom: 0; width: 1px;
+            background: linear-gradient(to bottom, transparent, #FFFFFF, transparent);
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+            z-index: 100;
+            animation: shineLR 15s infinite cubic-bezier(0.4, 0, 0.2, 1);
+            pointer-events: none;
+        }
+
+        .shining-line-v {
+            position: fixed;
+            left: 0; right: 0; height: 1px;
+            background: linear-gradient(to right, transparent, #FFFFFF, transparent);
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+            z-index: 100;
+            animation: shineTB 20s infinite cubic-bezier(0.4, 0, 0.2, 1);
+            pointer-events: none;
+        }
+
+        @keyframes shineLR { 0% { left: -10%; } 100% { left: 110%; } }
+        @keyframes shineTB { 0% { top: -10%; } 100% { top: 110%; } }
+
+        .glass-module {
+            background: var(--surface);
+            backdrop-filter: blur(40px);
+            border: 1px solid var(--border);
+        }
+
+        .reveal { opacity: 0; transform: translateY(20px); transition: 1s cubic-bezier(0.16, 1, 0.3, 1); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        .metadata { font-size: 10px; font-family: 'JetBrains Mono', monospace; text-transform: uppercase; letter-spacing: 0.5em; color: var(--accent); font-weight: 700; }
+
+        .industrial-heading {
+            font-size: clamp(2.5rem, 6vw, 5rem);
+            font-weight: 800;
+            line-height: 1;
+            text-transform: uppercase;
+            letter-spacing: -0.04em;
+        }
+
+        .prose-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text-dim);
+            max-width: 800px;
+        }
+
+        .central-portrait {
+            width: 100%;
+            max-width: 800px;
+            aspect-ratio: 16/9;
+            margin: 0 auto;
+            border-radius: 30px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            position: relative;
+            box-shadow: 0 0 50px rgba(139, 92, 246, 0.1);
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 2.5rem;
+            border-radius: 20px;
+            text-align: center;
+            transition: 0.3s;
+        }
+        .stat-card:hover { background: rgba(139, 92, 246, 0.05); border-color: var(--accent); }
+
+        .timeline-item {
+            padding-left: 3rem;
+            border-left: 1px solid var(--border);
+            position: relative;
+            padding-bottom: 4rem;
+        }
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            left: -5px;
+            top: 0;
+            width: 10px;
+            height: 10px;
+            background: var(--accent);
+            border-radius: 50%;
+            box-shadow: 0 0 15px var(--accent);
+        }
+
+        .cert-box {
+            background: #0A0A0A;
+            border: 1px solid #1A1A1A;
+            padding: 30px;
+            border-radius: 15px;
+            transition: 0.4s;
+        }
+        .cert-box:hover { border-color: var(--accent); transform: translateY(-5px); }
+
+        ::-webkit-scrollbar { width: 3px; }
+        ::-webkit-scrollbar-thumb { background: var(--accent); }
+    </style>
+</head>
+<body class="overflow-x-hidden">
+
+    <div class="kinetic-bg"></div>
+    <div class="shining-line-h"></div>
+    <div class="shining-line-v"></div>
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-[500] px-6 py-8">
+        <div class="max-w-[1500px] mx-auto flex justify-between items-center glass-module rounded-2xl px-10 py-4">
+            <a href="index.html" class="flex items-center gap-6 group">
+                <img src="logos/logo.PNG" alt="HIZEN" class="h-8 w-auto object-contain">
+                <div class="flex flex-col border-l border-white/10 pl-6 hidden md:flex">
+                    <span class="text-lg font-black uppercase tracking-tight">HIZEN TECH</span>
+                    <span class="metadata mt-1">Executive Board</span>
+                </div>
+            </a>
+            <div class="hidden lg:flex items-center gap-12 text-[10px] font-black uppercase tracking-[0.4em] text-gray-500">
+                <a href="index.html" class="hover:text-white transition">Return to Hub</a>
+                <a href="#contact" class="text-white border-b border-accent pb-1">Engage Principal</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Header: Full Center Photo -->
+    <header class="pt-60 pb-32 px-10 text-center relative">
+        <div class="max-w-[1200px] mx-auto space-y-16 reveal">
+            <span class="metadata">Principal // Lead Architect</span>
+            <h1 class="industrial-heading">CH. ZAIN HAIDER</h1>
+            
+            <!-- CENTRAL LARGE PHOTO -->
+            <div class="central-portrait">
+                <img src="logos\zainpic.PNG" alt="Zain Haider Portrait" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/1200x800/111/fff?text=CH.+ZAIN+HAIDER'">
+                <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
+            </div>
+
+            <p class="prose-text mx-auto text-xl md:text-2xl font-light italic text-gray-400">
+                "The evolution of intelligence is a clinical process. I started as a child of the digital era; I am now the architect of its sovereignty."
+            </p>
+        </div>
+    </header>
+
+    <!-- Core Metrics -->
+    <section class="py-20 px-10">
+        <div class="max-w-[1400px] mx-auto grid grid-cols-2 lg:grid-cols-4 gap-8 reveal">
+            <div class="stat-card">
+                <div class="text-4xl font-black text-white mb-2">18</div>
+                <div class="metadata !text-[8px]">Years of Age</div>
+            </div>
+            <div class="stat-card">
+                <div class="text-4xl font-black text-white mb-2">8+ Yrs</div>
+                <div class="metadata !text-[8px]">Industry Exp.</div>
+            </div>
+            <div class="stat-card">
+                <div class="text-4xl font-black text-white mb-2">350+</div>
+                <div class="metadata !text-[8px]">Global Projects</div>
+            </div>
+            <div class="stat-card">
+                <div class="text-4xl font-black text-white mb-2">50+</div>
+                <div class="metadata !text-[8px]">Collaborative Experts</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Inspiring Narrative -->
+    <section class="py-40 px-10 border-t border-white/5 bg-[#030303]">
+        <div class="max-w-[1200px] mx-auto grid lg:grid-cols-2 gap-32 items-center">
+            <div class="space-y-12 reveal">
+                <h2 class="text-4xl font-black uppercase italic italic">The Origin <br>of Mastery.</h2>
+                <div class="prose-text space-y-6">
+                    <p>
+                        Zain Haider’s trajectory is a defiance of the standard technical timeline. His journey began in childhood, ignited by a single <strong>Facebook Advertisement</strong>. What started as a modest data entry project became the catalyst for a decade-long pursuit of technical clinical perfection.
+                    </p>
+                    <p>
+                        The focus was never on simple execution; it was on the <strong>development of logic</strong>. From those early scripts, a profound expertise in high-tier IT consultancy was born. Today, Zain operates as an elite CISO and Architect, leading a collaborative network of over 50 professionals to deliver mission-critical infrastructure to global partners.
+                    </p>
+                </div>
+            </div>
+
+            <div class="space-y-10 reveal delay-200">
+                <div class="timeline-item">
+                    <h4 class="text-white font-black uppercase text-sm tracking-widest mb-2">The Catalyst Phase</h4>
+                    <p class="text-gray-500 text-xs leading-relaxed uppercase tracking-tighter">Childhood entry via social-node acquisition. First data entry project completed with 100% logic accuracy.</p>
+                </div>
+                <div class="timeline-item">
+                    <h4 class="text-white font-black uppercase text-sm tracking-widest mb-2">Technical Scaling</h4>
+                    <p class="text-gray-500 text-xs leading-relaxed uppercase tracking-tighter">Transitioned to offensive security and complex SaaS architecture. Surpassed 200 project deliveries before age 16.</p>
+                </div>
+                <div class="timeline-item" style="padding-bottom: 0;">
+                    <h4 class="text-white font-black uppercase text-sm tracking-widest mb-2">Sovereign Authority</h4>
+                    <p class="text-gray-500 text-xs leading-relaxed uppercase tracking-tighter">Current standing: 18-year-old Lead Architect and Consultant. Global portfolio of 350+ projects achieved.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certification Wall -->
+    <section class="py-40 px-10">
+        <div class="max-w-[1400px] mx-auto">
+            <div class="text-center mb-24 reveal">
+                <span class="metadata">Verified Technical Credentials</span>
+                <h2 class="text-4xl font-black uppercase mt-6">Global Certificates.</h2>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 reveal">
+                <div class="cert-box text-center">
+                    <i class="fa-solid fa-user-shield text-4xl text-red-500 mb-6 block"></i>
+                    <h5 class="text-white font-black uppercase text-xs tracking-widest mb-2">OSCP Master</h5>
+                    <p class="text-gray-600 text-[9px] uppercase font-bold tracking-widest">Offensive Security Certified</p>
+                </div>
+                <div class="cert-box text-center">
+                    <i class="fa-brands fa-google text-4xl text-blue-500 mb-6 block"></i>
+                    <h5 class="text-white font-black uppercase text-xs tracking-widest mb-2">Google IT Support</h5>
+                    <p class="text-gray-600 text-[9px] uppercase font-bold tracking-widest">IT Support Professional Certificate</p>
+                </div>
+                <div class="cert-box text-center">
+                    <i class="fa-solid fa-lock text-4xl text-green-500 mb-6 block"></i>
+                    <h5 class="text-white font-black uppercase text-xs tracking-widest mb-2">Cybersecurity Pro</h5>
+                    <p class="text-gray-600 text-[9px] uppercase font-bold tracking-widest">Professional Cybersecurity Certificate</p>
+                </div>
+                <div class="cert-box text-center">
+                    <i class="fa-brands fa-amazon text-4xl text-yellow-500 mb-6 block"></i>
+                    <h5 class="text-white font-black uppercase text-xs tracking-widest mb-2">AWS Specialist</h5>
+                    <p class="text-gray-600 text-[9px] uppercase font-bold tracking-widest">Certified Solutions Architect</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Direct Engagement -->
+    <section id="contact" class="py-40 px-10 border-t border-white/5 bg-[#000]">
+        <div class="max-w-[1200px] mx-auto text-center space-y-12 reveal">
+            <h2 class="text-5xl font-black uppercase tracking-tight italic">Direct Engagement.</h2>
+            <p class="prose-text mx-auto text-lg italic text-gray-500">The intake for strategic consultancy is selective. Secure the principal's attention for high-tier industrial scaling.</p>
+            <div class="pt-10">
+                <a href="mailto:info@hizentradingltd.co.uk" class="text-3xl md:text-5xl font-black text-white hover:text-accent transition-all underline underline-offset-[20px] decoration-1">
+                    info@hizentradingltd.co.uk
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mega Footer -->
+    <footer class="py-40 px-10 bg-black border-t border-white/5 text-center">
+        <div class="max-w-[1500px] mx-auto space-y-10">
+            <img src="logos/logo.PNG" alt="HIZEN" class="h-10 mx-auto opacity-80">
+            <div class="text-[10px] text-gray-800 font-black uppercase tracking-[1em]">
+                CH. ZAIN HAIDER / HIZEN TRADING CO. LTD / EXECUTIVE ARCHIVE 2026
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>

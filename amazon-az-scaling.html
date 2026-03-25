@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SOVEREIGN INDUSTRIAL SEO ARCHITECTURE -->
+    <title>ECOM.SCALING </title>
+    <meta name="description" content="Complete e-commerce scaling mastery by Hizen Trading Co. Ltd. Amazon FBA, TikTok Shop, Shopify Plus, and clinical UK logistical infrastructure.">
+    
+    <!-- FAVICON -->
+    <link rel="icon" type="image/png" href="logos/logo.PNG">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200;0,400;0,600;0,800;1,200;1,400&family=JetBrains+Mono:wght@400;700&display=swap');
+
+        :root {
+            --bg: #000000;
+            --surface: rgba(10, 10, 15, 0.98);
+            --accent: #8B5CF6;
+            --border: rgba(139, 92, 246, 0.2);
+            --text-main: #F8FAFC;
+            --text-dim: #64748B;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg);
+            color: var(--text-main);
+            scroll-behavior: smooth;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .mono { font-family: 'JetBrains Mono', monospace; }
+
+        /* --- HOMEPAGE-SYNCED PURPLE KINETIC GRID --- */
+        .kinetic-bg {
+            position: fixed;
+            inset: 0;
+            background-image: 
+                linear-gradient(rgba(139, 92, 246, 0.15) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(139, 92, 246, 0.15) 1px, transparent 1px);
+            background-size: 50px 50px;
+            z-index: -1;
+            mask-image: radial-gradient(circle at 50% 50%, black, transparent 95%);
+            animation: gridFlow 35s linear infinite;
+        }
+        @keyframes gridFlow { 0% { background-position: 0 0; } 100% { background-position: 100px 100px; } }
+
+        /* --- DUAL AXIS WHITE SHINING LINES --- */
+        .shining-line-h {
+            position: fixed;
+            top: 0; bottom: 0; width: 1.5px;
+            background: linear-gradient(to bottom, transparent, #FFFFFF, transparent);
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
+            z-index: 100;
+            animation: shineLR 12s infinite cubic-bezier(0.4, 0, 0.2, 1);
+            pointer-events: none;
+        }
+
+        .shining-line-v {
+            position: fixed;
+            left: 0; right: 0; height: 1.5px;
+            background: linear-gradient(to right, transparent, #FFFFFF, transparent);
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
+            z-index: 100;
+            animation: shineTB 15s infinite cubic-bezier(0.4, 0, 0.2, 1);
+            pointer-events: none;
+        }
+
+        @keyframes shineLR { 0% { left: -10%; } 100% { left: 110%; } }
+        @keyframes shineTB { 0% { top: -10%; } 100% { top: 110%; } }
+
+        .glass-module {
+            background: var(--surface);
+            backdrop-filter: blur(40px);
+            border: 1px solid var(--border);
+        }
+
+        .reveal { opacity: 0; transform: translateY(15px); transition: 1s cubic-bezier(0.16, 1, 0.3, 1); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        .metadata { font-size: 9px; font-family: 'JetBrains Mono', monospace; text-transform: uppercase; letter-spacing: 0.5em; color: var(--accent); font-weight: 700; }
+
+        .industrial-heading {
+            font-size: clamp(2.2rem, 5vw, 4rem);
+            font-weight: 800;
+            line-height: 1.1;
+            text-transform: uppercase;
+            letter-spacing: -0.03em;
+        }
+
+        .prose-text {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: var(--text-dim);
+            max-width: 850px;
+        }
+
+        .technical-label {
+            font-size: 11px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: #FFFFFF;
+            border-left: 2px solid var(--accent);
+            padding-left: 1rem;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        .btn-minimal {
+            background: white;
+            color: black;
+            padding: 14px 32px;
+            font-size: 10px;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            border-radius: 4px;
+            transition: 0.3s;
+        }
+        .btn-minimal:hover { background: var(--accent); color: white; box-shadow: 0 0 30px rgba(139, 92, 246, 0.3); transform: translateY(-2px); }
+
+        ::-webkit-scrollbar { width: 3px; }
+        ::-webkit-scrollbar-thumb { background: var(--accent); }
+    </style>
+</head>
+<body class="overflow-x-hidden">
+
+    <div class="kinetic-bg"></div>
+    <div class="shining-line-h"></div>
+    <div class="shining-line-v"></div>
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-[500] px-6 py-8">
+        <div class="max-w-[1500px] mx-auto flex justify-between items-center glass-module rounded-2xl px-10 py-4">
+            <a href="index.html" class="flex items-center gap-6 group">
+                <img src="logos/logo.PNG" alt="HIZEN" class="h-8 w-auto object-contain" onerror="this.src='https://placehold.co/120x40/000000/FFFFFF?text=HIZEN'">
+                <div class="flex flex-col leading-none border-l border-white/10 pl-6 hidden md:flex">
+                    <span class="text-lg font-black uppercase tracking-tight">HIZEN</span>
+                    <span class="metadata mt-1">Sovereign Authority</span>
+                </div>
+            </a>
+            <div class="hidden lg:flex items-center gap-12 text-[10px] font-black uppercase tracking-[0.3em] text-gray-500">
+                <a href="index.html" class="hover:text-white transition">Hub Console</a>
+                <a href="#inquiry" class="text-white border-b border-accent pb-1">Venture Engagement</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Area -->
+    <header class="relative pt-60 pb-32 px-10">
+        <div class="max-w-[1200px] mx-auto space-y-12 reveal">
+            <h1 class="industrial-heading">
+                Multi-Channel <br>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-white via-purple-300 to-gray-500 italic">E-Commerce Sovereignty.</span>
+            </h1>
+            <p class="prose-text text-xl md:text-2xl font-light text-gray-400 max-w-4xl border-l border-accent/40 pl-10 italic">
+                Clinical venture acceleration from Amazon FBA to TikTok Shop. We architect the synaptic supply chains and digital storefronts that define global marketplace dominance.
+            </p>
+        </div>
+    </header>
+
+    <!-- CORE TECHNICAL NARRATIVE -->
+    <main class="space-y-40 pb-40 px-10">
+        
+        <!-- SECTION 01: AMAZON FBA MASTERY -->
+        <section class="max-w-[1200px] mx-auto grid lg:grid-cols-2 gap-24 items-start reveal">
+            <div class="space-y-8">
+                <span class="technical-label">Amazon FBA Ecosystem</span>
+                <div class="prose-text space-y-6">
+                    <p>
+                        At **Hizen Trading Co. Ltd**, we treat Amazon FBA as a high-precision engineering field. Success on the platform is not an accident; it is the result of a **Sovereign Growth Framework**. 
+                    </p>
+                    <p>
+                        Whether building a bespoke **Private Label** brand or managing a large-scale **Wholesale** portfolio, our expertise ensures clinical adherence to the A9 algorithm. We audit every synaptic path of your listing—from SEO weight and conversion logic to multi-region inventory management—positioning your venture for multi-million dollar industrial stability.
+                    </p>
+                </div>
+            </div>
+            <div class="glass-module p-12 rounded-3xl border-dashed border-2 border-accent/20 opacity-90">
+                <h4 class="font-black text-xs uppercase tracking-[0.3em] mb-6 text-white">FBA Protocol Scope</h4>
+                <ul class="space-y-4 text-sm text-gray-500 font-bold italic">
+                    <li><i class="fa-solid fa-check text-accent mr-3"></i> Private Label Brand Architecture</li>
+                    <li><i class="fa-solid fa-check text-accent mr-3"></i> High-Volume Wholesale Sourcing</li>
+                    <li><i class="fa-solid fa-check text-accent mr-3"></i> Algorithmic A9 Optimization</li>
+                    <li><i class="fa-solid fa-check text-accent mr-3"></i> Global Inventory Synchronization</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- SECTION 02: TIKTOK SHOP & SOCIAL NODES -->
+        <section class="max-w-[1200px] mx-auto reveal">
+            <div class="grid lg:grid-cols-12 gap-16">
+                <div class="lg:col-span-4">
+                    <h2 class="text-3xl font-black uppercase tracking-tight mb-6">TikTok Shop <br>& Social Labs.</h2>
+                    <p class="metadata !text-[8px]">Viral Algorithmic StandardsS</p>
+                </div>
+                <div class="lg:col-span-8 space-y-12">
+                    <div class="prose-text">
+                        <p>
+                            TikTok Shop represents the next frontier of e-commerce. At Hizen, we don't just "post content"—we engineer viral conversion nodes. Our expertise in **TikTok Shop Scaling** combines deep behavioral analytics with industrial-grade influencer synchronization.
+                        </p>
+                        <p>
+                            We manage the entire lifecycle: from shop set-up and affiliate logic to the technical management of livestream surges. This is clinical social commerce, designed to turn attention into immediate technical revenue.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 03: MULTI-CHANNEL SYNC (SHOPIFY / WALMART / EBAY) -->
+        <section class="max-w-[1200px] mx-auto grid lg:grid-cols-2 gap-24 items-start reveal">
+            <div class="glass-module p-12 rounded-3xl border-dashed border-2 border-accent/20 order-2 lg:order-1">
+                <div class="grid grid-cols-2 gap-6">
+                    <div class="text-center p-6 border border-white/5 rounded-2xl bg-black/40">
+                        <i class="fa-brands fa-shopify text-3xl text-accent mb-4"></i>
+                        <p class="text-[10px] font-black uppercase tracking-widest">Shopify Plus</p>
+                    </div>
+                    <div class="text-center p-6 border border-white/5 rounded-2xl bg-black/40">
+                        <i class="fa-solid fa-store text-3xl text-blue-400 mb-4"></i>
+                        <p class="text-[10px] font-black uppercase tracking-widest">Walmart WFS</p>
+                    </div>
+                    <div class="text-center p-6 border border-white/5 rounded-2xl bg-black/40">
+                        <i class="fa-brands fa-ebay text-3xl text-yellow-500 mb-4"></i>
+                        <p class="text-[10px] font-black uppercase tracking-widest">eBay Global</p>
+                    </div>
+                    <div class="text-center p-6 border border-white/5 rounded-2xl bg-black/40">
+                        <i class="fa-solid fa-globe text-3xl text-white mb-4"></i>
+                        <p class="text-[10px] font-black uppercase tracking-widest">Cross-Border</p>
+                    </div>
+                </div>
+            </div>
+            <div class="space-y-8 order-1 lg:order-2">
+                <span class="technical-label">Infrastructure Decoupling</span>
+                <div class="prose-text space-y-6">
+                    <p>
+                        True sovereignty means never relying on a single platform. We architect **Shopify Plus** flagship stores that serve as the high-tier digital HQ of your venture. 
+                    </p>
+                    <p>
+                        Simultaneously, we expand your reach into the **Walmart WFS** and **eBay Global** ecosystems, ensuring your inventory is accessible across every major market node while maintaining a unified, technical data core.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 04: UK LOGISTICAL INFRASTRUCTURE -->
+        <section class="max-w-[1200px] mx-auto reveal">
+            <div class="grid lg:grid-cols-12 gap-16">
+                <div class="lg:col-span-4">
+                    <h2 class="text-3xl font-black uppercase tracking-tight mb-6">Logistical <br>Synapse (UK).</h2>
+                    <p class="metadata !text-[8px]">Sovereign Supply Chain Standard V.9.4</p>
+                </div>
+                <div class="lg:col-span-8 space-y-16">
+                    <div class="grid md:grid-cols-2 gap-12">
+                        <div class="space-y-4">
+                            <h4 class="font-black text-sm uppercase tracking-widest text-white">Dedicated UK Prep Center</h4>
+                            <p class="text-sm text-gray-500 leading-relaxed">Clinical inspection, labeling, and kitting of technical assets at our high-tier London-adjacent nodes. 100% compliance with FBA and TikTok inbound requirements.</p>
+                        </div>
+                        <div class="space-y-4">
+                            <h4 class="font-black text-sm uppercase tracking-widest text-white">FedEx / UPS / DHL Labeling</h4>
+                            <p class="text-sm text-gray-500 leading-relaxed">Direct partnership integration with Tier-1 carriers. Immediate provision of Amazon-partnered and TikTok-integrated shipping labels via FedEx, UPS, and DHL.</p>
+                        </div>
+                        <div class="space-y-4">
+                            <h4 class="font-black text-sm uppercase tracking-widest text-white">Inventory Intelligence</h4>
+                            <p class="text-sm text-gray-500 leading-relaxed">Real-time monitoring of stock levels across all channels, utilizing predictive analytics to ensure capital is never stagnated in slow-moving inventory nodes.</p>
+                        </div>
+                        <div class="space-y-4">
+                            <h4 class="font-black text-sm uppercase tracking-widest text-white">Full Logistic Support</h4>
+                            <p class="text-sm text-gray-500 leading-relaxed">End-to-end management of the physical layer. From factory floor to the final mile via our global carrier network, Hizen provides clinical scaling support.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 05: FINAL COMMITMENT -->
+        <section class="max-w-[1200px] mx-auto text-center space-y-12 reveal">
+            <div class="inline-block px-4 py-1 border border-accent/30 rounded-full">
+                <span class="metadata !text-[8px]">E-Commerce Sovereign Hub</span>
+            </div>
+            <h2 class="text-4xl font-black uppercase italic">The Journey to Multi-Channel Dominance.</h2>
+            <p class="prose-text mx-auto text-center text-lg italic leading-relaxed">
+                Our journey in venture scaling is defined by the technical success of our partners. We don't just sell products; we architect the future vessels of global commerce. Every brand we scale is a clinical commitment to the long-term sovereign stability of your venture.
+            </p>
+        </section>
+
+    </main>
+
+    <!-- PROJECT ENGAGEMENT BOARD -->
+    <section id="inquiry" class="py-40 px-10 border-t border-white/5 bg-[#050505]">
+        <div class="max-w-[1400px] mx-auto glass-module p-20 rounded-[40px] reveal border-accent/10">
+            <div class="grid lg:grid-cols-2 gap-32 items-center">
+                <div class="space-y-12">
+                    <h2 class="text-4xl font-black uppercase tracking-tight italic">Project <br>Engagement.</h2>
+                    <p class="text-gray-500 text-lg max-w-md italic font-light">The Hizen intake is selective. We prioritize e-commerce ventures requiring absolute clinical precision and global scaling expertise.</p>
+                    <div class="space-y-4 pt-10 border-t border-white/5">
+                        <span class="metadata">Direct Sovereign Link</span>
+                        <a href="mailto:info@hizentradingltd.co.uk" class="text-2xl font-black text-white hover:text-accent transition-all underline underline-offset-[12px] decoration-1">
+                            info@hizentradingltd.co.uk
+                        </a>
+                    </div>
+                </div>
+
+                <form class="space-y-10" onsubmit="event.preventDefault();">
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <input type="text" placeholder="PRINCIPAL NAME" class="bg-transparent border-b border-white/10 py-4 outline-none focus:border-accent text-[10px] uppercase font-bold tracking-[0.4em]">
+                        <input type="text" placeholder="ENTITY" class="bg-transparent border-b border-white/10 py-4 outline-none focus:border-accent text-[10px] uppercase font-bold tracking-[0.4em]">
+                    </div>
+                    <div class="space-y-4">
+                        <span class="metadata !text-[8px]">Select Venture Protocol</span>
+                        <select class="w-full bg-black border border-white/10 p-5 rounded-lg text-[10px] font-bold uppercase tracking-[0.2em] outline-none focus:border-accent cursor-pointer appearance-none">
+                            <option>AMAZON PRIVATE LABEL SCALING</option>
+                            <option>TIKTOK SHOP ALGORITHMIC DOMINANCE</option>
+                            <option>MULTI-CHANNEL (SHOPIFY/WALMART)</option>
+                            <option>UK LOGISTICS & PREP CENTER AUDIT</option>
+                        </select>
+                    </div>
+                    <textarea placeholder="MISSION SPECIFICATIONS..." rows="4" class="w-full bg-transparent border border-white/10 p-5 rounded-lg text-[10px] font-bold uppercase tracking-[0.2em] outline-none focus:border-accent resize-none"></textarea>
+                    <button type="submit" class="btn-minimal w-full">
+                        Dispatch Brief <i class="fa-solid fa-paper-plane ml-4"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+     <!-- Master Footer -->
+    <footer class="py-40 px-10 border-t border-white/5 bg-[#000]">
+        <div class="max-w-[1500px] mx-auto grid lg:grid-cols-4 gap-24 text-left">
+            <div class="col-span-1 space-y-10">
+                <div class="flex items-center gap-8">
+                    <img src="logos/logo.PNG" alt="HIZEN" class="h-8 w-auto opacity-90">
+                    <div class="flex flex-col border-l border-white/10 pl-6 leading-none"><span class="font-black text-2xl uppercase italic text-white">HIZEN</span><span class="metadata !text-[7px]">Sovereign Archive</span></div>
+                </div>
+                <p class="text-[10px] text-gray-500 uppercase tracking-widest leading-[2.5] font-bold italic">PRECISION • TECHNOLOGY • RELIABILITY</p>
+            </div>
+            <div class="lg:col-span-3 grid md:grid-cols-3 gap-24">
+                <div class="space-y-10">
+                    <h6 class="metadata">Intelligence</h6>
+                    <ul class="text-[12px] text-gray-600 space-y-6 font-bold italic">
+                        <li><a href="ai-framework-design.html" class="text-white hover:text-accent transition">AI Framework Design</a></li>
+                        <li><a href="offensive-cyber-labs.html" class="text-white hover:text-accent transition">Offensive Cyber Labs</a></li>
+                        <li><a href="saas-architecture.html" class="text-white hover:text-accent transition">SaaS Architecture</a></li>
+                        <li><a href="cloud-data-sovereign.html" class="text-white hover:text-accent transition">Cloud Data Sovereign</a></li>
+                    </ul>
+                </div>
+                <div class="space-y-10">
+                    <h6 class="metadata">Venture</h6>
+                    <ul class="text-[12px] text-gray-600 space-y-6 font-bold italic">
+                        <li><a href="uk-ltd-formation.html" class="text-white hover:text-accent transition">UK LTD Formation</a></li>
+                        <li><a href="us-llc-entity-design.html" class="text-white hover:text-accent transition">US LLC Entity Design</a></li>
+                        <li><a href="merchant-compliance.html" class="text-white hover:text-accent transition">Merchant Compliance</a></li>
+                        <li><a href="amazon-az-scaling.html" class="text-white hover:text-accent transition">Amazon Scaling</a></li>
+                    </ul>
+                </div>
+                <div class="space-y-10">
+                    <h6 class="metadata">Principal Board</h6>
+                    <ul class="text-[12px] text-gray-600 space-y-6 font-black uppercase">
+                        <li><a href="zain-haider.html" class="text-white hover:text-accent transition">CH. ZAIN HAIDER</a></li>
+                        <li><a href="arshman-hussain.html" class="text-white hover:text-accent transition">CH. ARSHMAN HUSSAIN</a></li>
+                        <li><a href="aims.html" class="text-white hover:text-accent transition">PHILOSOPHY & AIMS</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="mt-40 text-center text-[11px] text-gray-800 font-black tracking-[1em] uppercase border-t border-white/5 pt-20">&copy; 2026 HIZEN TRADING CO. LTD. ALL RIGHTS RESERVED.</div>
+    </footer>
+
+
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
