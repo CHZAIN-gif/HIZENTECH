@@ -333,7 +333,7 @@
     </section>
 
     <!-- Leadership Section -->
-    <section id="leadership" class="py-32 px-10"> 
+  <section id="leadership" class="py-32 px-10"> 
         <div class="max-w-[1600px] mx-auto">
             <div class="metadata mb-10 text-accent">Leadership Division</div>
             <div class="grid lg:grid-cols-2 gap-16 xl:gap-24">
@@ -341,7 +341,6 @@
                     <div class="w-full max-w-[450px]">
                         <div class="portrait-frame overflow-hidden rounded-xl border border-white/10 bg-zinc-900/50 aspect-[3/2] relative shadow-xl">
                             <img src="logos/zainpic.PNG" alt="CH. ZAIN HAIDER" class="w-full h-full object-cover transition-transform duration-700 hover:scale-105" onerror="this.src='https://placehold.co/600x400/111/fff?text=ZAIN+HAIDER'">
-                            <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
                         </div>
                     </div>
                     <div class="space-y-3">
@@ -458,11 +457,12 @@
                 <input type="text" id="c-input" placeholder="Inquire technical mission..." onkeypress="if(event.key==='Enter') startChat()">
                 <button onclick="startChat()" style="color:var(--dark-gold); background:none; border:none; cursor:pointer;"><i class="fa-solid fa-paper-plane"></i></button>
             </div>
-            <a href="https://wa.me/923241121819" target="_blank" class="wa-link">WhatsApp Executive Direct</a>
+            <a href="https://wa.me/447490285035" target="_blank" class="wa-link">WhatsApp Executive Direct</a>
         </div>
     </div>
 
-    <!-- TRIGGER BUTTON (DARK GOLD WITH WHITE HEADSET) -->
+    
+    <!-- TRIGGER BUTTON -->
     <div onclick="toggleChat()" class="chat-btn">
         <i class="fa-solid fa-headset text-3xl text-white"></i>
         <div id="notif" class="notif-badge">1</div>
@@ -494,13 +494,26 @@
             b.scrollTop = b.scrollHeight;
 
             try {
-                const r = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${GEMINI_KEY}`, {
-                    method: "POST", headers: {"Content-Type": "application/json"},
-                    body: JSON.stringify({contents: [{parts: [{text: `You are HIZEN AI terminal. Respond as an elite senior technical consultant for CH. Zain Haider and CH. Arshman Hussain. User mission: ${val}`}]}]})
+                // FIXED ENDPOINT AND TEMPLATE LITERAL
+                const r = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=${GEMINI_KEY}`, {
+                    method: "POST", 
+                    headers: {"Content-Type": "application/json"},
+                    body: JSON.stringify({
+                        contents: [{
+                            parts: [{
+                                text: `You are HIZEN AI terminal. Respond as an elite senior technical consultant for CH. Zain Haider and CH. Arshman Hussain. User mission: ${val}`
+                            }]
+                        }]
+                    })
                 });
+                
                 const d = await r.json();
-                const txt = d.candidates[0].content.parts[0].text;
-                b.innerHTML += `<div class="msg-box bot-m"><strong>[HIZEN]:</strong> ${txt}</div>`;
+                if (d.candidates && d.candidates[0]) {
+                    const txt = d.candidates[0].content.parts[0].text;
+                    b.innerHTML += `<div class="msg-box bot-m"><strong>[HIZEN]:</strong> ${txt}</div>`;
+                } else {
+                    throw new Error("Invalid response");
+                }
             } catch (err) {
                 b.innerHTML += `<div class="msg-box bot-m">Security protocol active. Bridge via <strong>WhatsApp</strong> for immediate mission deployment.</div>`;
             }
